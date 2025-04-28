@@ -1,0 +1,20 @@
+[
+    {
+        "sku": "21PE##005078test1",
+        "source_code": "default",
+        "quantity": "0",
+        "status": 1
+    },
+    {
+        "sku": "22PE##006611pest1",
+        "source_code": "default",
+        "quantity": "2",
+        "status": 1
+    },
+    {
+        "sku": "22PE##006742rest1",
+        "source_code": "default",
+        "quantity": "0",
+        "status": 1
+    }
+]
