@@ -46,7 +46,7 @@ def main():
         
         if price_and_quantity_filename:          
             send_quantities(prises_and_quantity_dict) #add report
-            send_prices(prises_and_quantity_dict)
+            send_prices(prises_and_quantity_dict) #add report
             check_and_replace_file(price_and_quantity_filename)
             create_confirmation_file(price_and_quantity_filename)
 

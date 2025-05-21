@@ -40,7 +40,7 @@ def send_quantities(prises_and_quantity_dict):
         temp_dict = {
                 "sku": sku,
                 "source_code": "default",
-                "quantity": quantity,
+                "quantity": int(quantity),
                 "status": 1,
             }
         

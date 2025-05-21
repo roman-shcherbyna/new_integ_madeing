@@ -24,6 +24,10 @@ def get_batches_for_quantity(quantity_list, batch_size):
     batched_result = []
     for i in range(0, len(quantity_list), batch_size):
         batch = quantity_list[i : i + batch_size]
+        
+        payload = {"sourceItems": batch}   # или то, что вы там реально собираете
+        print(">>> JSON-PAYLOAD:", json.dumps(payload, ensure_ascii=False, indent=4))
+        
         source_items = [
             {
                 "sku": item["sku"],
