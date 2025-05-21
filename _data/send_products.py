@@ -9,6 +9,10 @@ headers = {"Accept": "application/json","Content-Type": "application/json","Auth
 def send_products(products_list):
     batches = get_batches_for_products(products_list, int(os.getenv("BATCH_SIZE")))
 
+    with open("batches222.json", "w", encoding="utf-8") as f:
+        json.dump(batches, f, ensure_ascii=False, indent=4)
+        print("Батчи сохранены в batches22.json")
+
     for i, batch in enumerate(batches, start=1):
         logger.info(f"Sending a batch with new products. Nr: {i}")
         response = requests.post(

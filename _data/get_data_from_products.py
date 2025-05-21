@@ -32,7 +32,6 @@ def get_and_check_products_data(products_filename, sku_set, price_and_quantity_f
         res = {
                 'product': {
                     'sku': sku,
-                    'name': name,
                 }
             }
         
@@ -45,7 +44,7 @@ def get_and_check_products_data(products_filename, sku_set, price_and_quantity_f
             if price is not None:
                 res['product']['price'] = price
 
-            logger.info(f'New product! {sku}: name: {name} price: {price}')
+            logger.info(f'New product! {sku},  price: {price}')
             # report.add_data(sku, entry_type='new')
             products_list.append(res)
 

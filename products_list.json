@@ -1,16 +1,20 @@
 [
     {
         "product": {
-            "sku": "21PE##005078test1",
-            "name": "JC4153PP17LO0107 BRANSOLETA",
-            "price": "599"
+            "sku": "21AI##005394",
+            "price": "869"
         }
     },
     {
         "product": {
-            "sku": "22PE##006742rest1",
-            "name": "JC4306PP1ELG0000 TORBA",
-            "price": "1009"
+            "sku": "23AI##000840-UN",
+            "price": "539"
+        }
+    },
+    {
+        "product": {
+            "sku": "23PE##014344-40",
+            "price": "3920"
         }
     }
 ]

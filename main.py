@@ -6,6 +6,7 @@ from _data.get_all_products import get_all_products
 from _data.get_price_and_quantity import get_prices_and_quantity_lists
 from _data.send_products import send_products
 from _data.send_quantities import send_quantities
+from _data.send_prices import send_prices
 from _reports.reports_config import ReportR
 from _reports.logging_config import logger
 import os
@@ -45,6 +46,7 @@ def main():
         
         if price_and_quantity_filename:          
             send_quantities(prises_and_quantity_dict) #add report
+            send_prices(prises_and_quantity_dict)
             check_and_replace_file(price_and_quantity_filename)
             create_confirmation_file(price_and_quantity_filename)
 
@@ -63,5 +65,4 @@ def main():
 
 
 if __name__ == "__main__":
-        # Every 15 min? 
         main()

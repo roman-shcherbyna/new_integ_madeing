@@ -1,18 +1,18 @@
 [
     {
-        "sku": "21PE##005078test1",
+        "sku": "21AI##005394",
         "source_code": "default",
-        "quantity": "0",
+        "quantity": "1",
         "status": 1
     },
     {
-        "sku": "22PE##006611pest1",
+        "sku": "23AI##000840-UN",
         "source_code": "default",
-        "quantity": "2",
+        "quantity": "1",
         "status": 1
     },
     {
-        "sku": "22PE##006742rest1",
+        "sku": "23PE##014344-40",
         "source_code": "default",
         "quantity": "0",
         "status": 1

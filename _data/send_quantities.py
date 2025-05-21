@@ -39,6 +39,10 @@ headers = {"Accept": "application/json","Content-Type": "application/json","Auth
 def send_batches_for_quantities(quantity_list):
     batches = get_batches_for_quantity(quantity_list, int(os.getenv("BATCH_SIZE")))
 
+    with open("batches-poprawka.json", "w", encoding="utf-8") as f:
+        json.dump(batches, f, ensure_ascii=False, indent=4)
+        print("batches-poprawka.json")
+
     for i, batch in enumerate(batches, start=1):
         logger.debug(f"Sending a batch with quantity Nr: {i}")
         response = requests.post(
