@@ -7,6 +7,30 @@ import json
 from dotenv import load_dotenv
 load_dotenv()
 
+def send_batches_for_quantities(quantity_list):
+    headers = {"Accept": "application/json","Content-Type": "application/json","Authorization": "Bearer " + os.environ.get("TOKEN")}
+    
+    batches = get_batches_for_quantity(quantity_list, int(os.getenv("BATCH_SIZE")))
+
+
+    for i, batch in enumerate(batches, start=1):
+        logger.debug(f"Sending a batch with quantity Nr: {i}")
+        
+        with open("one_batch_with_quantity.json", "w", encoding="utf-8") as f:
+            json.dump(batch, f, ensure_ascii=False, indent=4)
+
+        response = requests.post(
+            url=os.getenv("BASE_URL") + os.getenv("END_POINT_ADD_STOCK"),
+            json=batch,
+            headers=headers,
+        )
+
+        print(f'url ={os.getenv("BASE_URL") + os.getenv("END_POINT_ADD_STOCK")}, headers = {headers}')
+
+        if response.status_code not in (200, 202):
+            logger.error(f"Error {response.status_code}: {response.text}", exc_info=True)
+
+
 def send_quantities(prises_and_quantity_dict):
     quantity_list = []
 
@@ -25,31 +49,9 @@ def send_quantities(prises_and_quantity_dict):
 
 
 
-    send_batches_for_quantities(quantity_list)
-
     with open('quantity_list_to_send.json', 'w', encoding='utf-8') as f:
         json.dump(quantity_list, f, ensure_ascii=False, indent=4)
+
+    send_batches_for_quantities(quantity_list)
+
     logger.info(f"Stany zostały zaktualizowane")
-
-
-
-
-headers = {"Accept": "application/json","Content-Type": "application/json","Authorization": "Bearer " + os.environ.get("TOKEN"),}
-
-def send_batches_for_quantities(quantity_list):
-    batches = get_batches_for_quantity(quantity_list, int(os.getenv("BATCH_SIZE")))
-
-    with open("batches-poprawka.json", "w", encoding="utf-8") as f:
-        json.dump(batches, f, ensure_ascii=False, indent=4)
-        print("batches-poprawka.json")
-
-    for i, batch in enumerate(batches, start=1):
-        logger.debug(f"Sending a batch with quantity Nr: {i}")
-        response = requests.post(
-            url=os.getenv("BASE_URL") + os.getenv("END_POINT_ADD_STOCK"),
-            data=json.dumps(batch, ensure_ascii=False),
-            headers=headers,
-        )
-
-        if response.status_code not in (200, 202):
-            logger.error(f"Error {response.status_code}: {response.text}", exc_info=True)
