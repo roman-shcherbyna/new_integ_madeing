@@ -13,7 +13,7 @@ def send_prices(prises_and_quantity_dict):
         {
             "product": {
                 "sku": sku,
-                "price": details["price"]
+                "price": int(details["price"])
             }
         }
         for sku, details in prises_and_quantity_dict.items()
@@ -26,6 +26,10 @@ def send_prices(prises_and_quantity_dict):
         print("Батчи сохранены в batches.json")
 
     for i, batch in enumerate(batches, start=1):
+
+        payload = batch   # или то, что вы там реально собираете
+        print(">>> PRODUCTS-JSON:", json.dumps(payload, ensure_ascii=False, indent=4))
+
         logger.info(f"Sending batch with price. Nr: {i}")
         response = requests.post(
             url=os.getenv("BASE_URL") + os.getenv("END_POINT_UPDATE"),

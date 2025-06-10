@@ -25,8 +25,6 @@ def send_batches_for_quantities(quantity_list):
             headers=headers,
         )
 
-        print(f'url ={os.getenv("BASE_URL") + os.getenv("END_POINT_ADD_STOCK")}, headers = {headers}')
-
         if response.status_code not in (200, 202):
             logger.error(f"Error {response.status_code}: {response.text}", exc_info=True)
 

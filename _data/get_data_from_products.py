@@ -37,12 +37,12 @@ def get_and_check_products_data(products_filename, sku_set, price_and_quantity_f
         
         if sku not in sku_set:
             res['product']['name'] = name
-            res['product']['attribute_set_id'] = '4'
+            res['product']['attribute_set_id'] = 4
             res['product']['visibility'] = 1
             res['product']['status'] = 2
 
             if price is not None:
-                res['product']['price'] = price
+                res['product']['price'] = int(price)
 
             logger.info(f'New product! {sku},  price: {price}')
             # report.add_data(sku, entry_type='new')
@@ -50,7 +50,7 @@ def get_and_check_products_data(products_filename, sku_set, price_and_quantity_f
 
         else:
             if price is not None:
-                res['product']['price'] = price
+                res['product']['price'] = int(price)
                 logger.debug(f'Update product {sku}: name: {name}, price: {price}')
                 # report.add_data(sku, entry_type='new')
                 products_list.append(res)

@@ -14,6 +14,7 @@ def send_products(products_list):
         print("Batches saved in batches_with_products.json")
 
     for i, batch in enumerate(batches, start=1):
+
         logger.info(f"Sending a batch with new products. Nr: {i}")
         response = requests.post(
             url=os.getenv("BASE_URL") + os.getenv("END_POINT_UPDATE"),

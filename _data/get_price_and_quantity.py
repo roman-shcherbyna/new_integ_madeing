@@ -29,8 +29,8 @@ def get_prices_and_quantity_lists(price_and_quantity_filename): #add report
             logger.error(f"The product has no price. SKU: {sku}")
 
         prises_and_quantity_dict[sku] = {}
-        prises_and_quantity_dict[sku]["price"] = price
-        prises_and_quantity_dict[sku]["quantity"] = quantity
+        prises_and_quantity_dict[sku]["price"] = int(price)
+        prises_and_quantity_dict[sku]["quantity"] = int(quantity)
         
 
     with open('prises_and_quantity_dict.json', 'w', encoding='utf-8') as f:
